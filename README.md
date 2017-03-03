@@ -12,6 +12,14 @@ Une diode est allumée si l'enfant (correspondant à cette diode) est à la mais
 
 Un tableau affiche quel enfant est à la maison et quel enfant n'y est pas.
 
+## Pour démarrer
+
+Il suffit de se placer à la racine du projet et d'effectuer les commandes suivantes :
+
+npm install
+npm start
+
+
 Publicité pour "Find My Kids ~ Footprints™ By Sollico Software"
 
 Licence : [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/)
