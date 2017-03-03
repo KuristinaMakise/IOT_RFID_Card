@@ -1,0 +1,24 @@
+{
+  "name": "iotnpm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-mandrill": "^1.0.1",
+    "open": "0.0.5",
+    "serialport": "^4.0.7",
+    "websocket": "^1.0.24",
+    "ws": "^2.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.3.0",
+    "http-server": "^0.9.0",
+    "sleep-ms": "^2.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

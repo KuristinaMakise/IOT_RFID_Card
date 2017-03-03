@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.8/p5.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.8/addons/p5.dom.js"></script>
+ <script type="text/javascript">
+
+    var socket = new WebSocket("ws://localhost:8081");
+
+    function setup()
+    {
+        // The socket connection needs two event listeners:
+        socket.onopen = openSocket;
+        //socket.onmessage = sendEmail;
+        socket.onmessage = showData;
+        
+        setImageVisible("imgFilsPasMaison", true);
+        setImageVisible("imgFillePasMaison", true);
+        setImageVisible("imgFilsMaison", false);
+        setImageVisible("imgFilleMaison", false);
+    }
+
+    function openSocket()
+    {
+        //text.html("Socket open");
+        socket.send("Hello server");
+    }
+ 
+    function showData(result)
+    {
+        if(result.data == 70) // La fille n'est pas à la maison
+        {
+            setImageVisible("imgFillePasMaison", true);
+            setImageVisible("imgFilleMaison", false);
+        }
+        if(result.data == 71) // La fille est à la maison
+        {
+            setImageVisible("imgFilleMaison", true);
+            setImageVisible("imgFillePasMaison", false);
+        }
+        if(result.data == 80) // Le fils n'est pas à la maison
+        {
+            setImageVisible("imgFilsPasMaison", true);
+            setImageVisible("imgFilsMaison", false);
+        }
+        if(result.data == 81) // Le fils est à la maison
+        {
+            setImageVisible("imgFilsMaison", true);
+            setImageVisible("imgFilsPasMaison", false);
+        }
+        console.log(result.data);
+    }
+
+    function modifierContenu()
+    {
+        /*setImageVisible("imgFilsMaison", false);
+        setImageVisible("imgFilleMaison", false);
+        setImageVisible("imgFilsPasMaison", false);
+        setImageVisible("imgFillePasMaison", false);*/
+    }
+
+    function setImageVisible(id, visible)
+    {
+        let img = document.getElementById(id);
+        img.style.visibility = (visible ? 'visible' : 'hidden');
+    }
+ </script>
+ 
+ <meta charset="utf-8">
+ <title>Enfants à la maison</title>
+ </head>
+ <body>
+    <br/>
+    <table id="tableau" align="center" border="1" cellpadding="10" cellspacing="1" width="50%">
+        <caption><b>ENFANTS À LA MAISON</b><br/><br/></caption>
+        <thead>
+            <tr>
+                <th>Enfants</th>
+                <th>est à la maison</th>
+                <th>n'est pas à la maison</th>
+            </tr>
+        </thead>
+        <tbody align="center">
+            <tr>
+                <td><b>Le fils</b></td>
+                <td><img id="imgFilsMaison" src="./images/maison.png"/></td>
+                <td><img id="imgFilsPasMaison" src="./images/maisonBarree.png"/></td>
+            </tr>
+            <tr>
+                <td><b>La fille</b></td>
+                <td><img id="imgFilleMaison" src="./images/maison.png"/></td>
+                <td><img id="imgFillePasMaison" src="./images/maisonBarree.png"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <input type="button" onclick="modifierContenu();" value="modifierContenu()" /> -->
+    <br/><br/><br/>
+
+    <div>
+        <a href="http://itunes.apple.com/us/app/footprints/id400119299?mt=8"><img src="./images/Footprints.jpg" alt='Footprints Icon' title='Footprints in the App Store'/> </a> <p>FOOTPRINTS! Where are your kids? Where have they been? With Footprints, you can track your kids!</p>
+    </div>
+
+    <br/><br/><br/><br/><br/>
+
+      <div>
+        <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png">
+            </a>
+            <a xmlns:cc="http://creativecommons.org/ns#" href="http://pigne.org" property="cc:attributionName" rel="cc:attributionURL">
+            </a>
+            <p>Licensed under a
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+        </p>
+    </div>
+ </body>
+</html>
