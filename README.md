@@ -17,7 +17,10 @@ Un tableau affiche quel enfant est à la maison et quel enfant n'y est pas.
 Il suffit de se placer à la racine du projet et d'effectuer les commandes suivantes :
 
 npm install
+
 npm start
+
+
 
 
 Publicité pour "Find My Kids ~ Footprints™ By Sollico Software"
